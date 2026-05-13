@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Timetable Resolution Reader</title>
+    <link rel="stylesheet" href="https://use.typekit.net/tvm5ist.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./data/timetableObjects.js" defer></script>
+    <script src="./data/sourceScans.js" defer></script>
+    <script src="./components.js" defer></script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="site-header" aria-label="Project header">
+        <p class="meta-line">KINROSS FIG. 1 / GRID RESOLUTION STUDY / 2026</p>
+      </header>
+
+      <div class="interface-grid">
+        <section class="control-strip" aria-label="Timetable controls">
+          <div class="mode-buttons" role="group" aria-label="Timetable layout mode">
+            <button class="mode-button is-active" type="button" data-layout-option="original" aria-pressed="true">Original</button>
+            <button class="mode-button" type="button" data-layout-option="grid8" aria-pressed="false">Landscape 8 Grid</button>
+            <button class="mode-button" type="button" data-layout-option="grid20" aria-pressed="false">Landscape 20 Grid</button>
+            <button class="mode-button" type="button" data-layout-option="grid32" aria-pressed="false">Landscape 32 Grid</button>
+            <button class="mode-button" type="button" data-layout-option="grid3d" aria-pressed="false">3D Grid System</button>
+            <button class="mode-button" type="button" data-layout-option="portrait8" aria-pressed="false">Portrait 8 Grid</button>
+          </div>
+
+          <div class="print-state-controls" role="group" aria-label="Print state">
+            <button class="print-state-button" type="button" data-print-state="source" aria-pressed="false">Source Scan</button>
+            <button class="print-state-button is-active" type="button" data-print-state="modern" aria-pressed="true">Modern Print</button>
+          </div>
+
+          <div class="utility-controls">
+            <button class="field-shift-button" id="fieldShiftToggle" type="button" aria-pressed="false">Field Shift</button>
+            <button class="random-shift-button" id="randomShiftButton" type="button">Random Shift</button>
+            <button class="keep-format-button" id="keepFormatButton" type="button" aria-pressed="false">Keep Format</button>
+            <label class="overlay-toggle" for="gridOverlayToggle">
+              <input id="gridOverlayToggle" type="checkbox" />
+              <span>Grid Overlay</span>
+            </label>
+            <button class="export-button" id="exportStageButton" type="button">Screenshot</button>
+          </div>
+        </section>
+
+        <section class="workspace" aria-label="Object-based timetable reconstruction">
+          <section class="stage-panel">
+            <div class="stage-caption">
+              <span id="stateLabel">Original Timetable Layout</span>
+              <span id="conditionLabel">Archival reconstruction</span>
+            </div>
+
+            <div class="timetable-stage" id="timetableStage" style="--wear: 0.64" role="img" aria-label="Live typographic reconstruction of a historical railway timetable">
+              <div class="paper-layer" aria-hidden="true"></div>
+              <div class="perspective-grid-layer" id="perspectiveGridLayer" aria-hidden="true"></div>
+              <div class="source-layer" id="sourceLayer" aria-hidden="true"></div>
+              <div class="prototype-layer" id="prototypeLayer" aria-hidden="true">
+                <img alt="" />
+              </div>
+              <div class="grid-overlay" id="gridOverlay" aria-hidden="true"></div>
+              <div class="object-layer" id="objectLayer"></div>
+            </div>
+          </section>
+
+          <aside class="reading-panel" aria-label="Reading analysis">
+            <p class="panel-kicker">Grid Condition</p>
+            <h2 id="analysisTitle">Original table logic</h2>
+            <dl>
+              <div>
+                <dt>Hierarchy</dt>
+                <dd id="hierarchyText"></dd>
+              </div>
+              <div>
+                <dt>Compression</dt>
+                <dd id="compressionText"></dd>
+              </div>
+              <div>
+                <dt>Comparison</dt>
+                <dd id="comparisonText"></dd>
+              </div>
+            </dl>
+          </aside>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
